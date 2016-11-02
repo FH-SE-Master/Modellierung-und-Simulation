@@ -12,3 +12,6 @@ _minted*
 .idea
 bin
 obj
+
+# Matlab files
+*.asv

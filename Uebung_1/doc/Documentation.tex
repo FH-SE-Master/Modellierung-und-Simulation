@@ -38,6 +38,7 @@
 
 % the default java directory structure and the main packages
 \newcommand{\srcDir}{../src/}
+\newcommand{\imageDir}{./images/}
 % =============================================
 % Code Settings
 % =============================================
@@ -89,7 +90,7 @@
 % Section gramar and basics 
 \section {Matlab}
 \label{sec:matlab}
-Dieser Abschnitt beschäftigt sich mit der Aufgabenstellung 1 der ersten Übung. Folgende Quelltexte zeigen die \emph{Matlab} Funktionen, die für diesen Teil der Übung implementiert wurden.
+Dieser Abschnitt beschäftigt sich mit der Aufgabenstellung 1 der ersten Übung. Die folgenden Quelltexte zeigen die \emph{Matlab} Funktionen, die für diesen Teil der Übung implementiert wurden.
 \newline
 \newline
 In die Funktion \emph{printPolynom} wurden Prüfungen der übergebenen Argumente implementiert wie
@@ -112,6 +113,23 @@ Wenn die Schrittweite nicht gegeben ist, dann wird der Standardwert $0.01$ verwe
 \ \newline
 Die Funktion aus dem Quelltext \ref{fig:print-poly} zeigt die Funktion, die implementiert wurde, um die Polynomfunktion repräsentiert durch einen Zeilenvektor in seine Repräsentation mit einer Zeichenkette zu konvertieren. Dies war erforderlich, da die Funktion \emph{poly2Sym} nicht zur Verfügung stand.
 \newpage
+\subsection{Simulation des Polynoms}
+Folgender Abschnitt beschäftigt sich mit den Simulationen des Polynoms.
+\newline
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.75]{\imageDir/sim_poly_0.JPG}
+\caption{Simulation 1 P=[1 -3 0 1]}
+\label{fig:sim-resonance-01}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.75]{\imageDir/sim_poly_1.JPG}
+\caption{Simulation 2 P=[1 -3 0 2]}
+\label{fig:sim-resonance-01}
+\end{figure}
+\ \newpage
 
 \section{Der Serienresonanzkreis}
 Dieser Abschnitt beschäftigt sich mit der Aufgabenstellung 2 der ersten Übung. 
@@ -204,23 +222,62 @@ $
 \newline
 \newline
 $
-Y(t) = 
+y(t) = 
 \begin{bmatrix}
 	0 & 1 \\[0.3em]
 \end{bmatrix}
  *X(t)
 $
+\begin{code}
+	\caption{Skript zum Simulieren eines Serienresonanzkreises}
+	\mSourceFile{\srcDir/resonanceCycleProgram.m}
+	\label{fig:resonance-cycle}
+\end{code}
 \newpage
+
+\subsection{Simulationen des Serienresonanzkreises}
+Folgender Abschnitt behandelt die durchgeführten Simulationen für den Serienresonanzkreis. Die Simulationen wurden mit den folgenden zeitlichen Parametern durchgeführt $tStart= 0$, $tEnd  = 50$ und $tStep = 0.5$. Da das Integrieren in Matlab sehr teuer ist, wurde eine nicht so feine Schrittbreite gewählt.
+\ \newline
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.75]{\imageDir/sim_resonance_0.JPG}
+\caption{Simulation 1 mit R1=1 , R2=2 , C=1 , L=2.5, U=1}
+\label{fig:sim-resonance-01}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.75]{\imageDir/sim_resonance_1.JPG}
+\caption{Simulation 1 mit R1=1 , R2=2 , C=1 , L=1.5, U=1}
+\label{fig:sim-resonance-01}
+\end{figure}
+\ \newpage
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.75]{\imageDir/sim_resonance_2.JPG}
+\caption{Simulation 1 mit R1=1 , R2=2 , C=2 , L=2.5, U=1}
+\label{fig:sim-resonance-01}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.75]{\imageDir/sim_resonance_3.JPG}
+\caption{Simulation 1 mit R1=1 , R2=2 , C=3 , L=2.5, U=1}
+\label{fig:sim-resonance-01}
+\end{figure}
+\newpage
+
 \section{Theorie der Kontinuierlichen Modellierung}
 Dieser Abschnitt beschäftigt sich mit der Aufgabenstellung 3 der ersten Übung.
 \subsection{3a Beschreibung der A,B,C Methode}
 Dieser Abschnitt beschäftigt sich mit der Beschreibung der $A, B, C$ Methode.
 \newline
 \newline
-Die $A, B, C$ Normalform beschreibt \emph{Linear Differential Systems}. Die Matrizen $A, B, C$ enthalten die Faktoren mit denen Eingangs-, Ausgangs- und Zustandsvariablen beeinflusst werden. 
+Die $A, B, C$ Normalform verwendet die Matrizen $A, B$ und $C$, welche die Vektoren sind, mit denen die Eingangs-, die Ausgangs- und die Zustandsvariablen beeinflusst werden. 
 \newline
 \newline
-\textbf{$A$-Matrix} ist die Matrix, welche die Faktoren der gegenseitigen Beeinflussung enthält. Diese Matrix beschreibt die gegenseitige Beeinflussung der inneren Zustände. Die $A$-Matrix hat so viele Spalten wie es innere Zustandsvariablen gibt, die in der $X(0)$-Matrix durch die Anzahl der Zeilen gegeben ist.
+\textbf{$A$-Matrix} ist der Vektor, der die gegenseitige Beeinflussung der inneren Zustände beschreibt. Die $A$-Matrix hat so viele Spalten wie es innere Zustände gibt, die in der $X(0)$-Matrix durch die Anzahl der Zeilen gegeben ist.
 \newline
 \newline
 $
@@ -237,7 +294,7 @@ $
 \newline
 \newline
 \newline
-\textbf{$B$-Matrix} ist die Matrix, welche die Faktoren der Beeinflussung der Eingangsvariablen enthält. Diese Matrix beschreibt die Beeinflussung der Eingangsvariablen, die in der $U(t)$-Matrix durch die Anzahl der Zeilen gegeben ist.
+\textbf{$B$-Matrix} ist der Vektor, der die Beeinflussung der Eingangsvariablen beschreibt. Die $B$-Matrix hat so viele Spalten wie es Eingangsvariablen gibt, die in der $U(t)$-Matrix durch die Anzahl der Zeilen gegeben ist.
 \newline
 \newline
 $
@@ -253,15 +310,20 @@ $
 \newline
 \newline
 \newline
-\textbf{$C$-Matrix} ist die Matrix, die aufgestellt wird, je nachdem welchen Output man erhalten will. Die $c$-Matrix wird in der Ausgangsgleichung $y(t) = C*x(t)$ verwendet. Die Anzahl der Spalten ergibt sich aus der Anzahl der Zeilen der Ausgangsmatrix, die angibt wie viele Ausgangsvariablen es gibt. Die Werte $0$ und $1$ in der $C$-Matrix werden verwendet um die einzelnen Ausgangsvariabeln bei der Betrachtung miteinzubeziehen oder auszuschließen.
+\textbf{$C$-Matrix} ist der Vektor, der definiert wird, je nachdem welchen Output man erhalten will. Die $C$-Matrix wird in der Ausgangsgleichung $y(t) = C * X(t)$ verwendet. Die Anzahl der Spalten ergibt sich aus der Anzahl der Zeilen der Ausgangsmatrix, die angibt wie viele Ausgangsvariablen es gibt. Die Werte $0$ und $1$ in der $C$-Matrix werden verwendet um die einzelnen Ausgangsvariabeln bei der Betrachtung miteinzubeziehen oder auszuschließen.
 \newline
 \newline
 $
-C_{i(t)} = \begin{bmatrix}
+C_{i(t)}
+*
+X(t)
+$
+;
+$
+\begin{bmatrix}
 	1 & 0\\[0.3em]
 \end{bmatrix}
 *
-X(t) =
 \begin{bmatrix}
 	i(t)  \\[0.3em]
 	y(t)
@@ -270,11 +332,10 @@ X(t) =
 $|$
 \hspace{1mm}
 $
-C_{y(t)} = \begin{bmatrix}
+\begin{bmatrix}
 	0 & 1\\[0.3em]
 \end{bmatrix}
 *
-X(t) =
 \begin{bmatrix}
 	i(t)  \\[0.3em]
 	y(t)
@@ -284,11 +345,10 @@ $
 $|$
 \hspace{1mm}
 $
-C_{y(t)} = \begin{bmatrix}
+\begin{bmatrix}
 	1 & 1\\[0.3em]
 \end{bmatrix}
 *
-X(t) =
 \begin{bmatrix}
 	i(t)  \\[0.3em]
 	y(t)
@@ -309,6 +369,6 @@ Die Simulationssoftware verwendet die Berechnungsmethoden intern um auf die grap
 Dieser Abschnitt beschäftigt sich mit der Beschreibung des Zusammenhangs der Formeln der $A, B, C$ Methode.
 \newline
 \newline
-
+Das abgeleitete Integral der $A, B, C$ Normalform wird dazu verwendet, um zu berechnen, wie sich ein Zustand in einem System zu einem Zeitpunkt $t$ verhält bzw. wie stark sich ein Wert eines Zustand zum Zeitpunkt $t$ verändert. Hat man sein System erst einmal in die $A, B, C$ Normalform gebracht, dann kann man das Integral anwenden, um die Simulationen über die Zeit $T$ zu erstellen.
 
 \end{document}
