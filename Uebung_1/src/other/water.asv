@@ -1,0 +1,9 @@
+function water
+    if (nargin == 0)
+        tStep= 0.01;
+        tmax = 100;
+    end
+    
+    A = -0.
+end
+
