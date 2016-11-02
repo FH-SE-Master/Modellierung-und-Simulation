@@ -1,4 +1,4 @@
-function X = calculateDifferential(A, B, C, U, X0, tStart, tEnd, tStep)
+function X = calculateDifferential(aMatrix, bMatrix, uMatrix, x0Matrix, cMatrix, tStart, tEnd, tStep)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -10,7 +10,7 @@ end
 
 % ------------------------- BEGIN Validation ----------------------------
 if(nargin < 6)                        % Validate parameter count
-    error('At least A, bMatrix, uMatrix, x0Matrix, xMatrix, tStart and tEndmust be given');
+    error('At least aMatrix, bMatrix, uMatrix, x0Matrix, xMatrix, tStart and tEndmust be given');
 elseif(tStart > tEnd)                 % Range check
     error('tStart must not overflow tEnd');
 elseif((tStep >= 1) || (tStep <= 0))  % Range check
@@ -23,13 +23,17 @@ i = 1;
 xAxis = tStart:tStep:tEnd;
 yAxis = zeros(1, int8((tEnd - tStart) / tStep));
 for t=tStart:tStep:tEnd
-    result     = double((expm(t * A) * X0) + (int(expm((t - tau) * A) * B * U, tau, 0, t)));
-    yAxis(1,i) = C * result;
+    preVal = expm(t * aMatrix) * x0Matrix;
+    val1 = bMatrix * uMatrix;
+    intVal = int(expm((t - tau) * aMatrix) * (bMatrix * uMatrix), tau, 0, t);
+    result     = (expm(t * aMatrix) * x0Matrix) + (double(int(expm((t - tau) * aMatrix) * (bMatrix * uMatrix), tau, 0, t)));
+    yAxis(1,i) = result(1, 1);
     i    = i + 1;
 end
 
 figure;                                 % open new window
 plot(xAxis, yAxis);                             % plot function over t
+plot(xAxis, yAxis2);                             % plot function over t
 hold on                                 % hold on
 xlabel(['t (', num2str(tStep), ')']);   % define xlabel
 ylabel('y');                            % define yLabel

@@ -151,6 +151,7 @@ $\check{y}(t) = \dfrac{1}{C} * i(t) - \dfrac{1}{C * R_{2}} * y(t)$
 \newline
 Substitution von $i(t), y(t)$
 \newline
+\newline
 $x_{1}(t) = i(t)$
 \newline
 \newline
@@ -172,9 +173,12 @@ A = \begin{bmatrix}
 	\frac{R_{1}}{L} & -\frac{1}{L} \\[0.3em]
     \frac{1}{C}     & -\frac{1}{C*R_{2}} \\[0.3em]
 \end{bmatrix}
+,
 B =  \begin{bmatrix}
-	\frac{1}{L} & 0 \\[0.3em]
+	\frac{1}{L} \\[0.3em]
+	0
 \end{bmatrix}
+,
 C =  \begin{bmatrix}
 	0 & 1 \\[0.3em]
 \end{bmatrix}
@@ -191,9 +195,10 @@ $
 \end{bmatrix}
  * X(t) + 
 \begin{bmatrix}
-	\frac{1}{L} & 0 \\[0.3em]
+	\frac{1}{L} \\[0.3em]
+	0
 \end{bmatrix}
- * u(t)
+ * U(t)
 $
 \newline
 \newline
