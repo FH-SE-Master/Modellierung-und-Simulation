@@ -393,6 +393,69 @@ $
 
 \section{Kontinuierliche Simulation}
 \label{sec:continous-simulation}
+Im Gegensatz zu linearen System können bei nicht linearen Systemen die Werte nicht zu jeden Zeitpunkt berechnet werden. Daher wird bei nicht linearen Systemen die Werteveränderung zum Zeitpunkt $t$ annäherungsweise berechnet. Damit können alle kontinuierlichen Systeme, die durch Differenzialgleichungen dargestellt werden können, simuliert werden. Bei einer richtigen Konfiguration und gewählten Schrittbreite $h$ können die Fehler so klein gehalten werden, dass sie nicht ins Gewicht fallen. 
+\newline
+\newline
+Es ist nicht möglich bei einer annäherungsweisen Berechnungsmethode Fehler vollständig zu vermeiden. Es ist nur möglich den Fehler in einem Bereich zu halten, die für die Simulation akzeptabel ist. Es werden gibt zwei Arten von Fehlern, den lokalen Fehler und den globalen Fehler, wobei der globale Fehler wichtiger ist als der lokale Fehler, der pro Schritt gemacht wird.
+\newline
+\newline
+Aufgrund der annäherungsweisen Berechnung werden Fehler gemacht, die mit den folgend aufgelisteten Methoden minimiert werden können.
+\newline
+\newline
+\textbf{Einschrittmethoden:}
+\begin{enumerate}
+	\item Euler Integration
+	\item Methode von Heun
+	\item Runge Kutta
+\end{enumerate}
+\textbf{Mehrschrittmethoden:}
+\begin{enumerate}
+	\item Adams Bashford
+	\item Adams Moulton
+\end{enumerate}
+\ \newline
+Welche Methode in der Simulation angewendet werden soll, hängt von der Simulation und der akzeptablen Fehlertoleranz der Simulation ab. Meistens wird aber die Methode von \emph{Runge Kutta} als anwendbar angesehen.
 
+\subsection{Euler Integration}
+Mit der Euler Integration $y_{i+1}=y_i+h*f(y_i)$, die ein Einschrittverfahren ist, die Änderung über ein Dreieck ermittelt. Dieses Verfahren ist das schnellste der Verfahren, da pro Schritt nur einmal die Funktion $f(y_k)$ aufgerufen werden muss. Der globale Fehler ($O(h)$) verhält sich linear zur gewählten Schrittweite.
+\newline
+\newline
+Bsp.: $h=10 \rightarrow O(h)=10, h=5 \rightarrow O(h)=5$
 
+\begin{figure}[h]
+\centering
+\includegraphics[scale=1]{\imageDir/euler_integration.JPG}
+\caption{Dreieck zur Berechnung der Änderung in einem Punkt}
+\label{fig:euler-integration}
+\end{figure}
+
+\subsection{Methode von Heun}
+Mit der Methode von Heun $y_{i+1}=y_i+h/2*(f(y_i) + f(y_i+h*f(y_i)))$, die auch ein Einschrittverfahren ist, wird der nächste Wert im Gegensatz zur Euler Integration über ein Trapez ermittelt. Der globale Fehler ($O(h^2)$) verhält sich quadratisch zur gewählten Schrittbreite $h$. 
+\newline
+\newline
+Bsp.: $h=10 \rightarrow O(h^2)=100, h=5 \rightarrow O(h^2)=25$
+\newline
+\newline
+Der globale Fehler nimmt daher bei geringerer Schrittbreite deutlich mehr ab als bei der Euler Integration.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=1]{\imageDir/method_heun.JPG}
+\caption{Trapez zur Berechnung der Änderung in einem Punkt}
+\label{fig:euler-integration}
+\end{figure}
+
+\subsection{Runge Kutta}
+Die Methode von Runge Kutta ist ein vierstufiges Einschrittverfahren, das mit Schrittweitenanpassung arbeitet. Es wird ein \emph{Threshold} des erlaubten Fehlers und die neue Schrittweite definiert, die angewendet wird, wenn der \emph{Threshold}  überschritten wird. Mit der dynamischen Anpassung der Schrittweite, kann bei einer Simulation der Rechenaufwand bei wenig Änderungen vermindert werden. Nehmen die Änderungen zu, wird der Fehler bei der Berechnung  größer, wodurch der \emph{Threshold} überschritten wird und Schrittweite auf den eingestellten Wer verkleinert wird. Damit wird der Fehler wieder kleiner, was mit einem verschlechterten Laufzeitverhalten der Simulation einhergeht.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=1]{\imageDir/runge_kutta.JPG}
+\caption{Runge Kutta Verfahren mit Schrittweitenanpassung}
+\label{fig:euler-integration}
+\end{figure}
+\ \newpage
+
+\subsection{Mehrstufige Verfahren}
+Bei dem Verfahren Adams Bashford werden nur vergangene Werte bei der Berechnung des nächsten Wert miteinbezogen. Bei dem Verfahren Adams Moulton werden zusätzlich zu den vergangen Werten auch angenommene Zukunftswerte bei der Berechnung des nächsten Werts miteinbezogen. Bei beiden Verfahren werden empirische Faktoren verwendet, die sich über die Zeit als gute Faktoren bewährt haben.
 \end{document}
