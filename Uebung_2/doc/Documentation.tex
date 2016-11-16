@@ -92,8 +92,8 @@
 \label{sec:continous-modeling}
 Dieser Abschnitt beschäftigt sich mit der Aufgabenstellung 1 der zweiten Übung. 
 
-\subsection{Erstes Blockdiagramm}
-Dieser Abschnitt beschäftigt ich mit dem Aufstellen der Gleichungen in A, B, C Normalform, die aus den gegebenen Blockdiagramm abgeleitet wurden.
+\subsection{Erstes Blockdiagramm für 1a 1}
+Dieser Abschnitt beschäftigt ich mit dem Aufstellen der Gleichungen in A, B, C Normalform, die aus den gegebenen Blockdiagramm aus Aufgabenstellung 1a abgeleitet wurden.
 \newline
 \newline
 $U= \begin{bmatrix}
@@ -177,8 +177,8 @@ Y=
 $
 \newpage
 
-\subsection{Zweites Blockdiagramm}
-Dieser Abschnitt beschäftigt ich mit dem Aufstellen der Gleichungen in A, B, C Normalform, die aus den gegebenen Blockdiagramm abgeleitet wurden.
+\subsection{Zweites Blockdiagramm für 1a 2}
+Dieser Abschnitt beschäftigt ich mit dem Aufstellen der Gleichungen in A, B, C Normalform, die aus den gegebenen Blockdiagramm aus Aufgabenstellung 1b abgeleitet wurden.
 \newline
 \newline
 $U= \begin{bmatrix}
@@ -253,7 +253,9 @@ C = \begin{bmatrix}
 $
 \newpage
 
-\subsection{Erstes System als Blockschaltbild}
+\subsection{Erstes System als Blockschaltbild für 1b 1}
+Dieser Abschnitt beschäftigt sich mit der Aufgabenstellung 1b 1. Die angeführten Vektoren wurden angenommen.
+\newline
 $
 U= \begin{bmatrix}
 	u_1 \\[0.3em]
@@ -269,12 +271,14 @@ $
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.70,angle=90]{\imageDir/aufgabe_b1.JPG}
-\caption{Blockschaltbild zum System aus Aufgabe b1}
+\caption{Blockschaltbild zum System aus Aufgabenstellung 1b 1}
 \label{fig:exercise-b1}
 \end{figure}
 \newpage
 
-\subsection{Zweites System als Blockschaltbild}
+\subsection{Zweites System als Blockschaltbild für 1b 2}
+Dieser Abschnitt beschäftigt sich mit der Aufgabenstellung 1b 2. Die angeführten Vektoren wurden angenommen.
+\newline
 $
 U= \begin{bmatrix}
 	u_1 \\[0.3em]
@@ -292,13 +296,13 @@ $
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.8,angle=90]{\imageDir/aufgabe_b2.JPG}
-\caption{Blockschaltbild zum System aus Aufgabe b2}
+\caption{Blockschaltbild zum System aus Aufgabenstellung 1b 2}
 \label{fig:exercise-b1}
 \end{figure}
 \newpage
 
-\subsection{Fehlerhaftes System in A, B, C Normalform}
-An diesem System ist die $C$-Matrix falsch, da dieses System drei Systemzustände besitzt und daher die $C$-Matrix drei Spalten benötigt, so viele wie es Systemzustände gibt.
+\subsection{Fehlerhaftes System in A, B, C Normalform für 1c}
+Dieser Abschnitt beschäftigt sich mit der Aufgabenstellung 1c. Die für das System aufgestellte $C$-Matrix ist falsch, da dieses System drei Systemzustände besitzt und daher die $C$-Matrix drei Spalten haben muss, nähmlich so viele Spalten wie es Systemzustände gibt.
 \newline
 \newline
 $
@@ -316,7 +320,9 @@ C = \begin{bmatrix}
 \end{bmatrix}
 $
 
-\subsection{System als Blockschaltbild und in A, B, C Normalform}
+\subsection{System als Blockschaltbild und in A, B, C Normalform für 1d}
+Dieser Abschnitt beschäftigt sich mit der Aufgabenstellung 1d.  
+\newline
 $
 X = \begin{bmatrix}
 	a \\[0.3em]
@@ -386,20 +392,23 @@ $
 \begin{figure}
 \centering
 \includegraphics[scale=0.7,angle=90]{\imageDir/aufgabe_b3.JPG}
-\caption{Blockschaltbild zum System aus Aufgabe b3}
+\caption{Blockschaltbild zum System aus Aufgabenstellung 1c}
 \label{fig:exercise-b1}
 \end{figure}
 \ \newpage
 
 \section{Kontinuierliche Simulation}
 \label{sec:continous-simulation}
-Im Gegensatz zu linearen System können bei nicht linearen Systemen die Werte nicht zu jeden Zeitpunkt berechnet werden. Daher wird bei nicht linearen Systemen die Werteveränderung zum Zeitpunkt $t$ annäherungsweise berechnet. Damit können alle kontinuierlichen Systeme, die durch Differenzialgleichungen dargestellt werden können, simuliert werden. Bei einer richtigen Konfiguration und gewählten Schrittbreite $h$ können die Fehler so klein gehalten werden, dass sie nicht ins Gewicht fallen. 
+Im Gegensatz zu linearen System können bei nicht linearen Systemen die Werte nicht zu jeden Zeitpunkt exakt berechnet werden. Daher wird bei nicht linearen Systemen (kontinuierliche Systeme) die Werteveränderung zum Zeitpunkt $t$ annäherungsweise (numerische Integration) berechnet. Mit der numerischen Integration können alle kontinuierlichen Systeme, die durch Differenzialgleichungen dargestellt werden können, linear oder nicht,  simuliert werden. Es können mit der numerischen Integration die Wertänderung zum Zeitpunkt $t$ nur annäherungsweise berechnet werden, wodurch zwangsweise Fehler gemacht werden. Die Fehler hängen ab von der Schrittweite $h$ und der gewählten Methode der numerischen Integration.
 \newline
 \newline
-Es ist nicht möglich bei einer annäherungsweisen Berechnungsmethode Fehler vollständig zu vermeiden. Es ist nur möglich den Fehler in einem Bereich zu halten, die für die Simulation akzeptabel ist. Es werden gibt zwei Arten von Fehlern, den lokalen Fehler und den globalen Fehler, wobei der globale Fehler wichtiger ist als der lokale Fehler, der pro Schritt gemacht wird.
+Ideal wäre die Schrittweite $h=0$, da dadurch überhaupt keine Fehler gemacht werden würden, es würde aber unendlich viel Laufzeit in Anspruch nehmen und ist daher nicht in endlicher Zeit lösbar. Eine zu große Schrittweite wie z.B. $h=10$ würde zu einen zu großen Fehler führen und ein Teil des Verhaltens des Systems könnte nicht erfasst werden. Auch ist eine über die Simulationsdauer gewählte Schrittweite $h$ vielleicht auch nicht immer passend, wenn es z.B. wenig Veränderungen im System gibt, eine zu kleine Schrittweite unnötig ist und bei starken Veränderungen eine zu kleine Schrittweite zu wenig ist. Daher bitten einige Methoden der numerischen Integration wie z.B. die Methode nach \emph{Runge Kutta} die Möglichkeit der Anpassung der Schrittweite während der Simulation an, wodurch die Simulation effizienter durchlaufen werden kann.
 \newline
 \newline
-Aufgrund der annäherungsweisen Berechnung werden Fehler gemacht, die mit den folgend aufgelisteten Methoden minimiert werden können.
+Wie schon erwähnt ist es nicht möglich eine Simulation eines nicht linearen Systems zu realisieren, ohne Fehler vollständig zu vermeiden. Es ist nur möglich den Fehler in einem Bereich zu halten, der für die Simulation akzeptabel ist. Die beiden Fehlertypen lokale Fehler und globale Fehler beschreiben den Fehler der entweder pro berechneten Schritt oder über die gesamte Simulationsdauer gemacht wird. Für eine Simulation ist der globale Fehler von größerem Interesse, da die pro Schritt gemachten Fehler bei einem akzeptablen globalen Fehler nicht mehr ins Gewicht fallen.
+\newline
+\newline
+Die folgende Auflistungen zeigen die Methoden der numerischen Integration, die sich in die beiden Gruppen \emph{Einschrittverfahren} und \emph{Mehrschrittverfahren} aufteilen.
 \newline
 \newline
 \textbf{Einschrittmethoden:}
@@ -414,18 +423,19 @@ Aufgrund der annäherungsweisen Berechnung werden Fehler gemacht, die mit den fo
 	\item Adams Moulton
 \end{enumerate}
 \ \newline
-Welche Methode in der Simulation angewendet werden soll, hängt von der Simulation und der akzeptablen Fehlertoleranz der Simulation ab. Meistens wird aber die Methode von \emph{Runge Kutta} als anwendbar angesehen.
+Die beiden Gruppen \emph{Einschritt-} und \emph{Mehrschrittverfahren} unterscheiden sich im Bezug auf die einbezogenen Werte bei der Berechnung, wobei bei Einschrittverfahren immer nur einen Wert verwenden und die Mehrschrittverfahren vergangene und zukünftige Werte miteinbeziehen können. Die Wahl der richtigen Methode für die Simulation hängt ab von der Simulation selbst, der benötigten Fehlertoleranz und dem Laufzeitverhalten. Allgemein wird das Einschrittverfahren nach \emph{Runge Kutta} als angemessen angesehen.
+\newpage 
 
 \subsection{Euler Integration}
-Mit der Euler Integration $y_{i+1}=y_i+h*f(y_i)$, die ein Einschrittverfahren ist, die Änderung über ein Dreieck ermittelt. Dieses Verfahren ist das schnellste der Verfahren, da pro Schritt nur einmal die Funktion $f(y_k)$ aufgerufen werden muss. Der globale Fehler ($O(h)$) verhält sich linear zur gewählten Schrittweite.
+Mit der Euler Integration $y_{i+1}=y_i+h*f(y_i)$, die ein Einschrittverfahren ist, wird die Wertänderung über ein rechtwinkliges Dreieck ermittelt. Dieses Verfahren ist das schnellste der Verfahren, da pro Schritt nur einmal die Funktion $f(y_i)$ aufgerufen werden muss. Der globale Fehler ($O(h)$) verhält sich linear zur gewählten Schrittweite.
 \newline
 \newline
-Bsp.: $h=10 \rightarrow O(h)=10, h=5 \rightarrow O(h)=5$
+Bsp.: $h=10 \rightarrow O(h), h'=h/2 \rightarrow O(h')=O(h/2)=$
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=1]{\imageDir/euler_integration.JPG}
-\caption{Dreieck zur Berechnung der Änderung in einem Punkt}
+\caption{Dreieck zur Berechnung der Steigung der Wertänderung}
 \label{fig:euler-integration}
 \end{figure}
 
@@ -433,7 +443,7 @@ Bsp.: $h=10 \rightarrow O(h)=10, h=5 \rightarrow O(h)=5$
 Mit der Methode von Heun $y_{i+1}=y_i+h/2*(f(y_i) + f(y_i+h*f(y_i)))$, die auch ein Einschrittverfahren ist, wird der nächste Wert im Gegensatz zur Euler Integration über ein Trapez ermittelt. Der globale Fehler ($O(h^2)$) verhält sich quadratisch zur gewählten Schrittbreite $h$. 
 \newline
 \newline
-Bsp.: $h=10 \rightarrow O(h^2)=100, h=5 \rightarrow O(h^2)=25$
+Bsp.: $h=10 \rightarrow O(h^2), h'=h/2 \rightarrow O(h')=O((h/2)^2)$
 \newline
 \newline
 Der globale Fehler nimmt daher bei geringerer Schrittbreite deutlich mehr ab als bei der Euler Integration.
@@ -441,21 +451,21 @@ Der globale Fehler nimmt daher bei geringerer Schrittbreite deutlich mehr ab als
 \begin{figure}[h]
 \centering
 \includegraphics[scale=1]{\imageDir/method_heun.JPG}
-\caption{Trapez zur Berechnung der Änderung in einem Punkt}
+\caption{Trapez zur Berechnung der Steigung der Wertänderung}
 \label{fig:euler-integration}
 \end{figure}
 
 \subsection{Runge Kutta}
-Die Methode von Runge Kutta ist ein vierstufiges Einschrittverfahren, das mit Schrittweitenanpassung arbeitet. Es wird ein \emph{Threshold} des erlaubten Fehlers und die neue Schrittweite definiert, die angewendet wird, wenn der \emph{Threshold}  überschritten wird. Mit der dynamischen Anpassung der Schrittweite, kann bei einer Simulation der Rechenaufwand bei wenig Änderungen vermindert werden. Nehmen die Änderungen zu, wird der Fehler bei der Berechnung  größer, wodurch der \emph{Threshold} überschritten wird und Schrittweite auf den eingestellten Wer verkleinert wird. Damit wird der Fehler wieder kleiner, was mit einem verschlechterten Laufzeitverhalten der Simulation einhergeht.
+Die Methode von Runge Kutta ist ein vierstufiges Einschrittverfahren, das mit Schrittweitenanpassung arbeitet. Es wird ein \emph{Threshold} des erlaubten Fehlers und die neue Schrittweite für den Fehlerfall definiert, die angewendet wird, wenn der \emph{Threshold}  überschritten wurde. Mit der dynamischen Anpassung der Schrittweite kann bei einer Simulation der Rechenaufwand bei wenig Änderungen vermindert werden. Nehmen die Änderungen zu, wird der Fehler bei der Berechnung größer, wodurch der \emph{Threshold} überschritten wird und die Schrittweite auf den definierten Wert verkleinert wird. Damit wird der Fehler wieder kleiner, was mit einem Rechenaufwand einhergeht.
+\newpage
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=1]{\imageDir/runge_kutta.JPG}
-\caption{Runge Kutta Verfahren mit Schrittweitenanpassung}
+\caption{\emph{Runge Kutta} Verfahren mit Schrittweitenanpassung}
 \label{fig:euler-integration}
 \end{figure}
-\ \newpage
 
-\subsection{Mehrstufige Verfahren}
-Bei dem Verfahren Adams Bashford werden nur vergangene Werte bei der Berechnung des nächsten Wert miteinbezogen. Bei dem Verfahren Adams Moulton werden zusätzlich zu den vergangen Werten auch angenommene Zukunftswerte bei der Berechnung des nächsten Werts miteinbezogen. Bei beiden Verfahren werden empirische Faktoren verwendet, die sich über die Zeit als gute Faktoren bewährt haben.
+\subsection{Mehrschrittverfahren}
+Bei dem Mehrschrittverfahren nach \emph{Adams Bashford} werden nur vergangene Werte bei der Berechnung des nächsten Werts miteinbezogen. Bei dem Mehrschrittverfahren nach \emph{Adams Moulton} werden zusätzlich zu den vergangen Werten auch angenommene Zukunftswerte bei der Berechnung des nächsten Werts miteinbezogen. Bei beiden Verfahren werden empirische Faktoren verwendet, die sich über die Zeit als gute Faktoren bewährt haben. Die Mehrschrittverfahren haben ein besseres Laufzeitverhalten sind aber schwerer zu implementieren.
 \end{document}
