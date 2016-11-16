@@ -135,34 +135,34 @@ Folgender Abschnitt beschäftigt sich mit den Simulationen des Polynoms.
 Dieser Abschnitt beschäftigt sich mit der Aufgabenstellung 2 der ersten Übung. 
 \newline
 \newline
-Umformen der Gleichung nach $\check{i}(t)$.
+Umformen der Gleichung nach $i'(t)$.
 \newline
 \newline
 \begin{tabularx}{\textwidth}{p{120pt} @{$=$ \hspace{10pt}} X X}
 	$u(t)$  & $R_{1} * i(t) + L * \dfrac{\delta i(t)}{\delta t} + y(t)$ \\
-	$u(t)$  & $R_{1} * i(t) + L * \check{i}(t) + y(t)$ & $\dfrac{\delta i(t)}{\delta t} = \check{i}(t)$ \\
-	$u(t) - R_{1} * i(t) - y(t)$  & $L * \check{i}(t)$ & $- R_{1} * i(t) - y(t))$ \\
-	$\dfrac{1}{L} * u(t) - \dfrac{R_{1}}{L} * i(t) - \dfrac{1}{L} * y(t)$  & $\check{i}(t)$ & $/ L$  \\
+	$u(t)$  & $R_{1} * i(t) + L * i'(t) + y(t)$ & $\dfrac{\delta i(t)}{\delta t} = i'(t)$ \\
+	$u(t) - R_{1} * i(t) - y(t)$  & $L * i'(t)$ & $- R_{1} * i(t) - y(t))$ \\
+	$\dfrac{1}{L} * u(t) - \dfrac{R_{1}}{L} * i(t) - \dfrac{1}{L} * y(t)$  & $i(t)$ & $/ L$  \\
 \end{tabularx}
 \ \newline
 \newline
-$\check{i}(t) = \dfrac{1}{L} * u(t) - \dfrac{R_{1}}{L} * i(t) - \dfrac{1}{L} * y(t)$
+$i'(t) = \dfrac{1}{L} * u(t) - \dfrac{R_{1}}{L} * i(t) - \dfrac{1}{L} * y(t)$
 \newline
 \newline
 \newline
 \newline
-Umformen der Gleichung nach $\check{y}(t)$.
+Umformen der Gleichung nach $y'(t)$.
 \newline
 \newline
 \begin{tabularx}{\textwidth}{p{120pt} @{$=$ \hspace{10pt}} X X}
 	$i(t)$  & $\dfrac{1}{R_{2}} * y(t) + C * \dfrac{\delta y(t)}{\delta t}$ \\
-	$i(t)$  & $\dfrac{1}{R_{2}} * y(t) + C * \check{y}(t)$ & $\dfrac{\delta y(t)}{\delta t} = \check{y}(t)$\\
-	$i(t) - \dfrac{1}{R_{2}} * y(t)$  & $C * \check{y}(t)$ & $- \dfrac{1}{R_{2}} * y(t)$ \\
-	$\dfrac{1}{C} * i(t) - \dfrac{1}{C * R_{2}} * y(t)$  & $\check{y}(t)$ & $/ C$ \\
+	$i(t)$  & $\dfrac{1}{R_{2}} * y(t) + C * y'(t)$ & $\dfrac{\delta y(t)}{\delta t} = \check{y}(t)$\\
+	$i(t) - \dfrac{1}{R_{2}} * y(t)$  & $C * y'(t)$ & $- \dfrac{1}{R_{2}} * y(t)$ \\
+	$\dfrac{1}{C} * i(t) - \dfrac{1}{C * R_{2}} * y(t)$  & $y'(t)$ & $/ C$ \\
 \end{tabularx}
 \ \newline
 \newline
-$\check{y}(t) = \dfrac{1}{C} * i(t) - \dfrac{1}{C * R_{2}} * y(t)$
+$y'(t) = \dfrac{1}{C} * i(t) - \dfrac{1}{C * R_{2}} * y(t)$
 \newline
 \newline
 \newline
@@ -176,9 +176,9 @@ $x_{1}(t) = i(t)$
 $x_{2}(t) = y(t)$
 \newline
 \newline
-$\check{x_{1}}(t) = - \dfrac{R_{1}}{L} * x_{1}(t) - \dfrac{1}{L} * x_{2}(t) + \dfrac{1}{L} * u(t)$
+$x_{1}'(t) = - \dfrac{R_{1}}{L} * x_{1}(t) - \dfrac{1}{L} * x_{2}(t) + \dfrac{1}{L} * u(t)$
 \newline
-$\check{x_{2}}(t) = \dfrac{1}{C} * x_{1}(t) - \dfrac{1}{C * R_{2}} * x_{2}(t) + 0 * u(t)$
+$x_{2}'(t) = \dfrac{1}{C} * x_{1}(t) - \dfrac{1}{C * R_{2}} * x_{2}(t) + 0 * u(t)$
 \newline
 \newline
 \newline
@@ -206,7 +206,7 @@ $
 \newline
 \newline
 $
-\check{X}(t) = 
+X'(t) = 
 \begin{bmatrix}
 	\frac{R_{1}}{L} & -\frac{1}{L} \\[0.3em]
     \frac{1}{C}     & -\frac{1}{C*R_{2}} \\[0.3em]
@@ -277,7 +277,7 @@ Dieser Abschnitt beschäftigt sich mit der Beschreibung der $A, B, C$ Methode.
 Die $A, B, C$ Normalform verwendet die Matrizen $A, B$ und $C$, welche die Vektoren sind, mit denen die Eingangs-, die Ausgangs- und die Zustandsvariablen beeinflusst werden. 
 \newline
 \newline
-\textbf{$A$-Matrix} ist der Vektor, der die gegenseitige Beeinflussung der inneren Zustände beschreibt. Die $A$-Matrix hat so viele Spalten wie es innere Zustände gibt, die in der $X(0)$-Matrix durch die Anzahl der Zeilen gegeben ist.
+\textbf{$A$-Matrix} ist der Vektor, der die gegenseitige Beeinflussung der inneren Zustandsvariablen beschreibt. Die $A$-Matrix hat so viele Spalten wie es innere Zustände gibt, die in der $X(0)$-Matrix durch die Anzahl der Zeilen gegeben ist.
 \newline
 \newline
 $
@@ -314,7 +314,7 @@ $
 \newline
 \newline
 $
-C_{i(t)}
+C
 *
 X(t)
 $
@@ -346,7 +346,8 @@ $|$
 \hspace{1mm}
 $
 \begin{bmatrix}
-	1 & 1\\[0.3em]
+	1 & 0\\[0.3em]
+	0 & 1\\[0.3em]
 \end{bmatrix}
 *
 \begin{bmatrix}
@@ -357,18 +358,18 @@ $
 \newline
 \newline
 \newline
-Hat man sein System auf die $A, B, C$ Normalform gebracht, kann man die einzelnen Werte mit dem Integral ausrechnen, das sich durch die Umformung der $A, B, C$ Normalform ergibt, wenn der Zustand $X(0)$ bekannt ist.
+Hat man sein System auf die $A, B, C$ Normalform gebracht, kann man die einzelnen Werte zum Zeitpunkt $t$ mit dem Integral ausrechnen, das sich durch die Umformung der Eingans- und Ausgangsgleichung ergibt, wenn es sich um eine lineare Gleichung handelt und wenn der Zustand $X(0)$ bekannt ist. Die aufgestellte Eingangs- und Ausgangsgleichung beschreiben das System, die in einer Simulationssoftware dazu verwendet werden kann, um das System über die Zeit $t$ zu simulieren. 
 \newline
 \newline
-Diese mathematische Beschreibung zeigt, die Zusammenhänge und Beeinflussung der Variablen innerhalb des Systems. Mit der $A, B, C$ Normalform, kann die Veränderung eines Zustands im System zum Zeitpunkt $t$ berechnet werden.
+Diese mathematische Beschreibung zeigt, die Zusammenhänge und Beeinflussung der Variablen innerhalb des Systems. Mit der $A, B, C$ Normalform, kann die Veränderung eines Zustands im System zum Zeitpunkt $t$ berechnet werden. Die Berechnung kann auch exakt erfolgen, wenn das System mit einer linearen Differenzialgleichung beschrieben ist.
 \newline
 \newline
-Die Simulationssoftware verwendet die Berechnungsmethoden intern um auf die graphische Darstellung zu kommen, also kann es keine Simulationssoftware geben, die nicht auf Grundlage dieser Berechnungsmethoden arbeitet.
+Bei einer Simulation kann neben der Annäherung auch die exakte Simulation eines Systems erfolgen, das mit der Eingangs- und Ausgangsgleichung in $A, B, C$ Normalform beschrieben ist. Ohne die Berechnungen mit den Gleichungen der $A, B, C$ Normalform kann keine Simulation eines Systems erfolgen, das durch diese Gleichungen beschrieben ist.
 \newpage
 \subsection{3b Zusammenhang der Formeln der A, B, C Methode}
 Dieser Abschnitt beschäftigt sich mit der Beschreibung des Zusammenhangs der Formeln der $A, B, C$ Methode.
 \newline
 \newline
-Das abgeleitete Integral der $A, B, C$ Normalform wird dazu verwendet, um zu berechnen, wie sich ein Zustand in einem System zu einem Zeitpunkt $t$ verhält bzw. wie stark sich ein Wert eines Zustand zum Zeitpunkt $t$ verändert. Hat man sein System erst einmal in die $A, B, C$ Normalform gebracht, dann kann man das Integral anwenden, um die Simulationen über die Zeit $T$ zu erstellen.
+Ein System in der $A, B, C$ Normalform, kann mit den Eingans- und Ausgangsgleichungen die Simulationen über die Zeit $T$ erstellen werden. Die aufgestellten Differenzialgleichungen beschreiben das zu testende System, wobei die Vektoren $A, B, C$ die Beeinflussung der Eingangs-, Ausgangs- und inneren Zustandsvariablen beschreiben. Das Integral kann dazu verwendet werden, um zu einem Zeitpunkt $t$ den exakten Zustand eines Systems zu berechnen, wenn die aufgestellte Differenzialgleichung eine lineare Differenzialgleichung ist. 
 
 \end{document}

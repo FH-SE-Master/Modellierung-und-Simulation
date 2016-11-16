@@ -3,7 +3,7 @@
 % ------------------------- BEGIN Setup --------------------------------
 data.R1 = 1;
 data.R2 = 2; 
-data.C  = 3;   % 1   | 2   | 3
+data.C  = 1;   % 1   | 2   | 3
 data.L  = 2.5; % 2.5 | 1.5
 data.U  = 1;
 %data.vector.A  = [data.R1/data.L -(1/data.L) ;
