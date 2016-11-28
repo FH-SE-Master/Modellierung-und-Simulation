@@ -1,4 +1,4 @@
-function solution = optimizeLanding(cfg)
+function population = optimizeLanding(cfg)
 % Performs the optimization of the landing
 
 population = [];
