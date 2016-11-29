@@ -1,8 +1,8 @@
 cfg                   = [];
 cfg.timeSpan          = 100;
-cfg.mu                = 10;
-cfg.lambda            = 100;
-cfg.deltaInit         = 10;
+cfg.mu                = 1;
+cfg.lambda            = 10;
+cfg.delta             = 10;
 cfg.simFile           = 'parametrized_lunar_landing';
 cfg.simParams         = simget(cfg.simFile);
 cfg.curBestQuality    = 1000;
@@ -15,34 +15,32 @@ curGeneration     = 1;
 curUnsuccessCount = 1;
 bestQualities     = [];
 population        = [];
+population{1}     = initialize([]); 
 
 while (run == 1)
+    result        = [];
     newPopulation = [];
-    % Initialize parents for mutation
-    if isempty(population)
-        for i=1:cfg.mu
-            population{i} = initialize([]);
-        end
-    end
     
-    % Select and mutate
+    % Select
     for i=1:cfg.lambda
         idxSize          = size(population);              % get size
-        randMatrix       = randperm(idxSize(:,2));        % create random matrix
-        idx              = randMatrix(1:1);               % get first item
-        solution         = initialize(population(1,idx)); 
-        solution         = mutate(solution, cfg);
-        solution         = evaluate(solution, cfg);
-        newPopulation{i} = solution;
+        % break if no further mutant available
+        if idxSize(:,2) == 0
+            break;
+        end
         
+        % random selection
+        randMatrix       = randperm(idxSize(:,2));        
+        idx              = randMatrix(1:1);               
+        solution         = population{idx};
         population(:,idx) = [];
-    end
-    population = newPopulation;
-    
-    % Mutate children
-    for i=1:1:cfg.mu
         
+        % bread and mutate
+        newPopulation = [newPopulation; bread(solution, cfg)];
     end
+    
+    % set new population
+    population = newPopulation;
     
     % Determine if continue
     run = ((curGeneration < cfg.maxGenerations) || (curUnsuccessCount < cfg.curUnsuccessCount));
