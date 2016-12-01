@@ -1,5 +1,7 @@
 function solution = mutate(solution, cfg)
 % Mutates the given candidate
+% @param solution the solution to mutate
+% @param cfg      the configuration holding configurable constants
 
 % Mutate first thrust
 tmpStart1 = mod(solution.start1 + (rand * cfg.delta), 100);
@@ -35,7 +37,7 @@ while solution.end2 <= solution.start2
     solution.end2 = solution.end2 + (rand * cfg.delta);
 end
 
-% Reset members
+% Reset evaluation members
 solution.quality          = [];
 solution.heightPRogress   = [];
 solution.velocityProgress = [];
