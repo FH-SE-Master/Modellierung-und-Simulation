@@ -11,7 +11,6 @@ Die Abbildung \ref{fig:simulink-model-luna-landing} zeigt das implementierte Mod
 	\caption{Simulink Modell der Mondlandung}
 	\label{fig:simulink-model-luna-landing}
 \end{figure}
--0.008801562	-7.17180995
 
 \subsubsection{Test 1}
 \begin{figure}[h]
@@ -74,69 +73,58 @@ Die gravierenden Unterschiede entstehen, da mit einer zu großen Schrittweite sc
 Die verschiedenen Integrationsmethoden \emph{ode5}, \emph{euler} unterscheiden sich durch ihren lokalen und globalen Error. Diese Error Indikatoren werden  durch verschiedene Mechanismen die bei der Integration angewandt werden, wie gewichtetes Mittel, Miteinbeziehung von vorherigen und/oder geschätzten Nachfolgern und der Verwendung empirischer Faktoren, beeinflusst.
 \newpage
 
+\begin{code}
+	\caption{Testprogramm für die Simulation mit modifiziertem Solver}
+	\mSourceFile{\srcDir/lunaLandingSolver.m}
+	\label{fig:luna-landing-solver-m}
+\end{code}
+
+\newpage
+
 \subsection{Modifikation der Mondlandungsmodell}
 \label{sec:sub-simulink-modified-model-luna-landing}
-
-Die Abbildung zeigt das modifizierte Modell der Mondlandung.
+Die Abbildung \ref{fig:simulink-luna-landing-modified} zeigt das modifizierte Modell der Mondlandung.
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.8]{\imageDir/simulink-model-luna-landing-modified.JPG}
+	\includegraphics[scale=0.7]{\imageDir/simulink-model-luna-landing-modified.JPG}
 	\caption{Mondladungsmodell mit Massenreduktion beim Bremsen}
 	\label{fig:simulink-luna-landing-modified}
 \end{figure}
 
 \subsubsection{Test 1}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{\imageDir/simulink-luna-landing-modified-test-1.JPG}
+	\caption{$h_{(t)}$=~-0.0685 $m$, $v_{(t)}$=~-6.91 $m/s$}
+	\label{fig:simulink-luna-landing-modified-test-1}
+\end{figure}
+\ \newpage
+
 \subsubsection{Test 2}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{\imageDir/simulink-luna-landing-modified-test-2.JPG}
+	\caption{$h_{(t)}$=~-0.033 $m$, $v_{(t)}$=~-8.088 $m/s$}
+	\label{fig:simulink-luna-landing-modified-test-2}
+\end{figure}
+
 \subsubsection{Test 3}
-\subsubsection{Test 4}
-\subsubsection{Test 5}
-
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{\imageDir/simulink-luna-landing-modified-test-3.JPG}
+	\caption{$h_{(t)}$=~-0.0088 $m$, $v_{(t)}$=~-3.4123 $m/s$}
+	\label{fig:simulink-luna-landing-modified-test-3}
+\end{figure}
 \newpage
-\section{Optimierung mit einen Evolutionsalgorithmus}
-\subsection{Der Evolutionsalgorithmus}
 
-\begin{code}
-	\caption{Funktion die einen Lösungskandidaten initialisiert}
-	\mSourceFile{\srcDir/initialize.m}
-	\label{fig:initialize-m}
-\end{code}
-
-\begin{code}
-\caption{Funktion, welche die Mutanten aus einem Elter erzeugt}
-\mSourceFile{\srcDir/bread.m}
-\label{fig:bread-m}
-\end{code}
-
-\begin{code}
-\caption{Funktion, welche einen Elter zu einem Mutanten konvertiert}
-\mSourceFile{\srcDir/mutate.m}
-\label{fig:mutate-m}
-\end{code}
-
-\begin{code}
-\caption{Funktion, welche die Simulation für einen Lösungskandidaten durchführt}
-\mSourceFile{\srcDir/evaluate.m}
-\label{fig:evaluate-m}
-\end{code}
-
-\begin{code}
-\caption{Funktion, welche die Simulation für einen Lösungskandidaten durchführt}
-\mSourceFile{\srcDir/moonLanding.m}
-\label{fig:moon-landing-m}
-\end{code}
-
+\subsubsection{Testergebnisse}
+\label{sec:simulink-luna-landing-modified-test-results}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.65]{\imageDir/simulink-luna-landing-modified-test-results.JPG}
+	\caption{Tabelle mit den Gesamtergebnissen}
+	\label{fig:simulink-luna-landing-modified-test-result}
+\end{figure}
+\ \newline
+Es wurden dieselben Parametervektoren wie für das originale Modell verwendet, wobei sich die Resultate für die ersten beiden Testfälle verbessert und für den dritten Testfall akzeptabel verschlechtert haben.
 \newpage
-\subsection{Optimierungen des Evolutionsalgorithmus}
-\subsubsection{Was ist eine geeignete Fitnessfunktion ?}
-\subsubsection{Was muss optimiert werden ?}
-\subsubsection{Welche Parameter können modifiziert werden ?}
-\subsubsection{Warum ein Evolutionsalgorithmus ?}
-
-\newpage
-\subsection{Auswertung der Testfälle}
-\subsubsection{Test 1}
-\subsubsection{Test 2}
-\subsubsection{Test 3}
-\subsubsection{Test 4}
-\subsubsection{Test 5}
-\subsubsection{Gegenüberstellung der Tests}
