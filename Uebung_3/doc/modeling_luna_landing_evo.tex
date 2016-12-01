@@ -31,9 +31,17 @@ Folgende Quelltexte sind das implementierte Hauptprogramm und die implementierte
 	\mSourceFile{\srcDir/evaluate.m}
 	\label{fig:evaluate-m}
 \end{code}
+\ \newpage
 
 \subsection{Optimierungen des Evolutionsalgorithmus}
 \subsubsection{Implementierung}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{\imageDir/simulink-model-luna-landing-parametrized.JPG}
+	\caption{Das parametrierbare Mondlandungsmodell}
+	\label{fig:simulink-model-luna-landing-parametrized}
+\end{figure}
+\ \newline
 Die Aufteilung der Aufgaben des Algorithmus wurden wie ind er Übung bereits gemacht übernommen. Ein Lösungskandidat wird mit $fac_{punish}$ bestraft wenn $minH > 0$, da hier der Boden nicht erreicht wurde und daher dieser Lösungskandidat nicht zu gut bewertet werden darf. Wenn $1/5$ der Lösungskandidaten bessere Lösungen gefunden hat als die letzte Generation, dann $\delta = \delta - \delta_{step}$ ansonsten $\delta = \delta + \delta_{step}$. Damit wird die Schrittweite zusätzlich erhöht oder verkleinert. 
 \newline
 \newline
