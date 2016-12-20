@@ -1,16 +1,29 @@
-a    = [0.2 0.1];
-b    = 0.025;
-f0   = 1;
-xt   = 1;
-res  = zeros((48/0.01), 2);
+% Simulation parameters
+tStep  = 0.01;
+tMax   = 100;
+tSart  = 1;
+% simulation arguments
+alpha  = 0.2;
+a      = 0.1;
+b      = 0.025;
+At     = 1;
+% result matrizes 
+res    = [];
+tSteps = [];
     
-for i=1:1:2
-for t=1:0.01:48
+% loop variables
+j  = 1;
+for t=tSart:tStep:tMax
+    % discrete calculation of A(n+1)
+    At = (alpha * At) + (a + (b * (cos(pi*(t-8)/12))));
     
-    % growth
-    ft = a(1) + b * (cos(pi*(t-8)/12));
-    xt = (xt + ft) - (a * xt);    
-    res(t,i) = xt(1,i);
+    res(j)    = At; 
+    tSteps(j) = t;
+    j         = j + 1;
 end
 
-end
+% plot results
+figure;
+plot(tSteps, res);
+xlabel('time')
+legend('A(t): (alpha * At) + (a + b * (cos(pi*(t-8)/12)))');
