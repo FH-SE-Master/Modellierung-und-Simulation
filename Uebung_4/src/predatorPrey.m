@@ -18,19 +18,21 @@ rProg = zeros(tMax/tStep+1,1);
 i     = 1;
 
 for t=0:tStep:tMax
-    
+    % Continous calculation of predators and preys
     Bt_ = (alpha * Bt) - (beta * Bt * Rt);
     Rt_ = (-gamma * Rt) + (delta * Bt * Rt);
 
     Bt = Bt + (Bt_ * tStep);
     Rt = Rt + (Rt_ * tStep);
 
+    % remember results
     bProg(i) = Bt;
     rProg(i) = Rt;
     i = i + 1;
 
 end
 
+% plot results
 figure;
 title ('Predator and Prey');
 plot(0:tStep:tMax, [bProg, rProg]);

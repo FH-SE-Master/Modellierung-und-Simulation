@@ -1,4 +1,4 @@
-% Simulation parameters
+% simulation parameters
 tStep  = 0.01;
 tMax   = 100;
 tSart  = 1;
@@ -10,16 +10,14 @@ At     = 1;
 % result matrizes 
 res    = [];
 tSteps = [];
-    
-% loop variables
-j  = 1;
+i      = 1;
 for t=tSart:tStep:tMax
     % discrete calculation of A(n+1)
     At = (alpha * At) + (a + (b * (cos(pi*(t-8)/12))));
     
-    res(j)    = At; 
-    tSteps(j) = t;
-    j         = j + 1;
+    res(i)    = At; 
+    tSteps(i) = t;
+    i         = i + 1;
 end
 
 % plot results
