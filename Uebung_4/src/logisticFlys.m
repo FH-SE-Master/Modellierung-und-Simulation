@@ -14,12 +14,13 @@ Pt_12  = 0;            % value at day 12
 t_C99  = 0;            % days when 99% has beeen reached first
 
 for t=tSart:tStep:tMax
-    % continous calculation
-    Pt_        = alpha * Pt - (beta * Pt^2);
-    Pt         = Pt + (Pt_ * tStep);
+    % change rate at t
+    Pt_    = alpha * Pt - (beta * Pt^2);
+    % current value at t
+    Pt     = Pt + (Pt_ * tStep);
     
     % save result
-    res(t)     = Pt;
+    res(t) = Pt;
     
     % get value at day 12
     if t == 12
@@ -36,5 +37,5 @@ end
 % plot results
 figure;
 plot(1:tStep:t_C99, res);
-xlabel('time')
-legend('A_(t): alpha * Pt - (beta * P^2)');
+xlabel('t')
+legend('P(t)');

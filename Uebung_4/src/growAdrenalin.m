@@ -1,6 +1,6 @@
 % simulation parameters
 tStep  = 0.01;
-tMax   = 100;
+tMax   = 48;
 tSart  = 1;
 % simulation arguments
 alpha  = 0.2;
@@ -12,9 +12,14 @@ res    = [];
 tSteps = [];
 i      = 1;
 for t=tSart:tStep:tMax
-    % discrete calculation of A(n+1)
-    At = (alpha * At) + (a + (b * (cos(pi*(t-8)/12))));
+    % growth rate at t
+    ft = (a + (b * (cos(pi*(t-8)/12))));
+    % grotwh and decay
+    At_ = (alpha * At) - (At * ft);
+    % new At at t
+    At  = At + (At_ * tStep);
     
+    % save result
     res(i)    = At; 
     tSteps(i) = t;
     i         = i + 1;
@@ -23,5 +28,6 @@ end
 % plot results
 figure;
 plot(tSteps, res);
-xlabel('time')
-legend('A(t): (alpha * At) + (a + b * (cos(pi*(t-8)/12)))');
+xlabel('t')
+ylabel('A')
+legend('A(t)');

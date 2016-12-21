@@ -1,5 +1,11 @@
 \section{Schwingkreise und Verkaufsdynamik}
-
+Folgende Simulationsparameter wurden verwendet:
+\begin{itemize}
+	\item\emph{startTime:} 0
+	\item\emph{endTime:} variable, angegeben bei Testfall
+	\item\emph{step:} fix, 0.0.1
+	\item\emph{solver:} ode4 (Runge Kutta)
+\end{itemize}
 \subsection{a}
 \begin{figure}[h]
 	\centering
@@ -9,13 +15,13 @@
 \end{figure}
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.85]{\imageDir/1-a-modell-test.JPG}
-\caption{Verlauf der Simulation des Modells}
+\includegraphics[scale=0.8]{\imageDir/1-a-modell-test.JPG}
+\caption{Verlauf bis endTime=100}
 \label{fig:1-a-modell-test}
 \end{figure}
-\ \newline
-Dieses System hat eine positive Rückkopplung und kann daher nicht zu einem Wert konvergieren, dazu wären zwei negative Rückkopplungen der beiden Integratoren \emph{employees} und \emph{stock}. Es fängt in diesem Fall auch nicht an zu Schwingen sondern \emph{''implodiert''} regelrecht. Es gibt keine Möglichkeit dieses System durch Parameterveränderung zu stabilisieren, da es sich hier um ein instabiles System handelt.
-\newpage
+\ \newpage
+
+Dieses System hat eine positive Rückkopplung und kann daher nicht zu einem Wert konvergieren, dazu wären zwei negative Rückkopplungen der beiden Integratoren \emph{employees} und \emph{stock} nötig. Es fängt in diesem Fall auch nicht an zu Schwingen sondern \emph{''implodiert''} regelrecht. Es gibt keine Möglichkeit dieses System durch Parameterveränderung zu stabilisieren, da es sich hier um ein instabiles System handelt.
 
 \subsection{b}
 \begin{figure}[h]
@@ -27,7 +33,7 @@ Dieses System hat eine positive Rückkopplung und kann daher nicht zu einem Wert
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.85]{\imageDir/1-b-modell-test-1.JPG}
-	\caption{Verlauf der Simulation des Modells, tMax=300}
+	\caption{Verlauf bis endTime=300}
 	\label{fig:1-b-modell-test-1}
 \end{figure}
 \ \newpage
@@ -35,11 +41,11 @@ Dieses System hat eine positive Rückkopplung und kann daher nicht zu einem Wert
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.85]{\imageDir/1-b-modell-test-2.JPG}
-	\caption{Verlauf der Simulation des Modells, tMax=1000}
+	\caption{Verlauf bis endTime=1000}
 	\label{fig:1-b-modell-test-2}
 \end{figure}
 \ \newline
-Dieses System wird durch die negative Rückkopplung stabilisiert und weist ein stabiles Verhalten auf, jedoch ist das System nun ein Schwingkreis. Dieses System wird auch nicht zu einem Punkt konvergieren, den es fehlt noch die zweite negative Rückkopplung, die das System dazu anregt zu einem Wert zu konvergieren.
+Dieses System wird durch die negative Rückkopplung stabilisiert und weist ein stabiles Verhalten auf, jedoch ist das System nun ein Schwingkreis. Dieses System wird auch nicht zu einem Wert konvergieren, den es fehlt noch die zweite negative Rückkopplung, die das System dazu anregt zu einem Wert zu konvergieren.
 
 \subsection{c}
 \begin{figure}[h]
@@ -53,7 +59,7 @@ Dieses System wird durch die negative Rückkopplung stabilisiert und weist ein s
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=1]{\imageDir/1-c-modell-test-1.JPG}
-	\caption{Verlauf der Simulation des Modells, tMax=100}
+	\caption{Verlauf bis endTime=100}
 	\label{fig:1-c-modell-test-1}
 \end{figure}
 \ \newpage
@@ -61,7 +67,7 @@ Dieses System wird durch die negative Rückkopplung stabilisiert und weist ein s
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=1]{\imageDir/1-c-modell-test-2.JPG}
-	\caption{Verlauf der Simulation des Modells, tMax=500}
+	\caption{Verlauf bis endTime=500}
 	\label{fig:1-c-modell-test-2}
 \end{figure}
 \ \newpage
@@ -69,10 +75,10 @@ Dieses System wird durch die negative Rückkopplung stabilisiert und weist ein s
 \begin{figure}[h]
 \centering
 \includegraphics[scale=1]{\imageDir/1-c-modell-test-3.JPG}
-\caption{Verlauf der Simulation des Modells, tMax=1000}
+\caption{Verlauf bis endTime=1000}
 \label{fig:1-c-modell-test-3}
 \end{figure}
 \ \newline
-Mit dem hinzufügen der zweiten negativen Rückkopplung wird das System zum gedämpften Schwingkreis, dass zu einem Wert konvergiert (\emph{employees, stock}).
+Mit dem Hinzufügen der zweiten negativen Rückkopplung, wird das System zum gedämpften Schwingkreis, der zu einem Wert konvergiert (\emph{employees, stock}).
 \newpage
 
