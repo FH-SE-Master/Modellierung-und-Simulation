@@ -1,14 +1,17 @@
-function epidemiologySIR(alpha, beta, N)
+function epidemiologySIR(alpha, beta, N, mu, p)
 % a1 - a6 are factors for the limit cycles
 
     if nargin==0
-        alpha = 10;
+        alpha = 3;
         beta  = 1;
-        N     = 10000;
+        N     = 8000000;
+        % long term parameters
+        mu    = 0.0005; % death rate
+        p     = 0.9;    % immunization rate
     end
     
     tStep = 0.001;
-    tMax  = 20;
+    tMax  = 10000;
     
     i = 1;
     r = 0;
@@ -21,9 +24,16 @@ function epidemiologySIR(alpha, beta, N)
     
     for t=0:tStep:tMax
         
-        s_ = -alpha * s * i / N;
-        i_ =  alpha * s * i / N - beta * i;
-        r_ =                      beta * i;
+        % no demographic observation
+        %s_ = -alpha * s * i / N;
+        %i_ =  alpha * s * i / N - beta * i;
+        %r_ =                      beta * i;
+        
+        % demographic observation
+        %                                      deaths      immunization
+        s_ = -alpha * s * i / N             - (mu * s) + (mu * N * (1-p));
+        i_ =  alpha * s * i / N - beta * i  - (mu * i);
+        r_ =                      beta * i  - (mu * r) + (mu * N * p);
         
         s = s + s_ * tStep;
         i = i + i_ * tStep;
@@ -41,6 +51,13 @@ function epidemiologySIR(alpha, beta, N)
     plot(0:tStep:tMax, [sProgress, iProgress, rProgress]);
     xlabel('time')
     legend('S(t)', 'I(t)', 'R(t)');
+    
+    % plot x=S, y=I
+    figure;
+    plot(sProgress, iProgress);
+    title('I over S');
+    xlabel('S');
+    ylabel('I');
 
 end
 
