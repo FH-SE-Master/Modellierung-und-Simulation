@@ -1,23 +1,22 @@
 function result = EvaluateFitness(param, optCfg)
-%UNTITLED5 Summary of this function goes here
-%   Detailed explanation goes here
+% Evaluates the fitness via the quadratic deviation 
+% between the calculated and given values
 
-    sizeInfected = size(optCfg.infected);
-    
     sirResult    = epidemiologySIR(optCfg.tStart, ... 
                                    optCfg.tStep, ...
                                    optCfg.tMax, ...
                                    param.alpha, ...
                                    param.beta, ...
                                    optCfg.iStart, ...
-                                   sizeInfected(2));
+                                   optCfg.N);
         
     % Calculate quadractic devaition
+    sizeInfected = size(optCfg.infected);
     result = 0;
-    for i=1:optCfg.tMax
-        sirIdx = (1/optCfg.tStep) * i;
+    for i=1:sizeInfected(2)
+        % Only take the values of full days
+        sirIdx = ((optCfg.tMax/optCfg.tStep) / optCfg.tMax) * i;
         result = result + (sirResult.iProg(sirIdx) - optCfg.infected(i))^2;
     end
-    
 end
 
