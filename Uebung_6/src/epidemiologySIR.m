@@ -1,4 +1,4 @@
-function result = epidemiologySIR(tStart, tStep, tMax, alpha, beta, iStart, N, mu, p)
+function result = epidemiologySIR(tStart, tStep, tMax, alpha, beta, iStart, N)
 % Does not work properly, don't know why yet !!!!!
 
     % simulation arguments
@@ -12,21 +12,10 @@ function result = epidemiologySIR(tStart, tStep, tMax, alpha, beta, iStart, N, m
     j = 1;
 
     for t=tStart:tStep:tMax
-        %                                       birth rate
+        %                                       
         s_ = -alpha * s * (i / N);
         i_ =  alpha * s * (i / N) - (beta * i);
         r_ =                        (beta * i);
-        
-        % with birth rate
-        if nargin == 8
-            s_ = s_ + (mu * N);
-            r_ = r_ + (mu * N);
-        end
-        % with birth rate and inoculation
-        if nargin == 9
-            s_ = s_ + (mu * N * (1 - p));
-            r_ = r_ + (mu * N * p);
-        end
 
         % calculate current value
         s = s + s_ * tStep;
