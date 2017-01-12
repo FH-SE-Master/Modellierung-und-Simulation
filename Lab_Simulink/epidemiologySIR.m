@@ -7,11 +7,11 @@ function epidemiologySIR(alpha, beta, N, mu, p)
         N     = 8000000;
         % long term parameters
         mu    = 0.0005; % death rate
-        p     = 0.9;    % immunization rate
+        p     = 0.6;    % immunization rate
     end
     
     tStep = 0.001;
-    tMax  = 10000;
+    tMax  = 50000;
     
     i = 1;
     r = 0;
