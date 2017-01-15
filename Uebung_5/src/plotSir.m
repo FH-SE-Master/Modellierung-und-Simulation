@@ -6,7 +6,6 @@ function plotSir(res, prefix, time, N, alpha, beta, mu)
     figure;
     hold on;
     
-    
     title(strcat(prefix, strcat('N=', strcat(N, strcat(', alpha=', strcat(alpha, strcat(', beta=', strcat(beta, strcat(', mu=', mu)))))))));
     plot(time, [res.iProg res.sProg res.rProg]);
     xlabel('time')
