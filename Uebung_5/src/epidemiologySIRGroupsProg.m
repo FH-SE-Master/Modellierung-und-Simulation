@@ -1,8 +1,8 @@
 % simulation parameter
 config        = [];
 config.tStart = 0;
-config.tStep  = 0.01;
-config.tMax   = 0.6;
+config.tStep  = 0.0001;
+config.tMax   = 2;
 
 % simulation arguments
 data(1) = struct('N', 1000, 'k', 2,  'iStart', 0, 'rStart', 0, ...

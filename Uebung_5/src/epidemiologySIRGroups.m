@@ -1,12 +1,13 @@
 function result = epidemiologySIRGroups(config, data)
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+% calculates the epidemiology for n given groups via an SIR model
 
+    % simulation arguments
     dataSize  = size(data);
     dataCount = dataSize(1,2);
     idx       = 1;
     runCont(1:dataCount) = struct('i', 0, 'r', 0, 's', 0);
     
+    % initialize run container with start values
     for j=1:1:dataCount
         curData = data(j); 
         runCont(j) = struct('i', curData.iStart, ...
@@ -14,6 +15,7 @@ function result = epidemiologySIRGroups(config, data)
                             's', (curData.N - curData.iStart - curData.rStart));
     end
 
+    % initialize result container
     result(1:dataCount) = struct('iProg', zeros(config.tMax/config.tStep+1,1), ...
                                  'sProg', zeros(config.tMax/config.tStep+1,1), ...
                                  'rProg', zeros(config.tMax/config.tStep+1,1));
@@ -23,8 +25,8 @@ function result = epidemiologySIRGroups(config, data)
         
         % loop for given data groups
         for j=1:1:dataCount
-            curRun  = runCont(j); 
-            curData = data(j); 
+            curRun  = runCont(j);  % holds last current results or start values at begin
+            curData = data(j);     % the current group to calculate
             
             % old current values
             s     = curRun.s;
@@ -40,6 +42,7 @@ function result = epidemiologySIRGroups(config, data)
                 sum = sum + ((sData.k * sData.m(j)) * (runCont(k).i/sData.N));
             end
             
+            % calculate deviation
             s_ = (-alpha * sum * s);
             i_ = (alpha  * sum * s) - (beta * i);
             r_ =                      (beta   * i);
@@ -56,6 +59,7 @@ function result = epidemiologySIRGroups(config, data)
             
         end  
         
+        % increase group prog index 
         idx = idx + 1;          
     end
 end
