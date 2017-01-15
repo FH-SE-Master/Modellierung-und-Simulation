@@ -9,25 +9,25 @@ ltStep  = 0.01;
 ltMax   = 1.5;  
 
 % Simulation parameters 'epidemiologyLogisitcProg'
-tStart = 1;   
-tStep  = 1;
-tMax   = kSize(1,2);
+start = 1;   
+step  = 1;
+max   = kSize(1,2);
 
 % result container
-results(tStart,tMax) = struct('iProg', [], 'sProg', []);
+results(start,max) = struct('iProg', [], 'sProg', []);
 
 % for each paramter combination
-for i=tStart:tStep:tMax
+for i=start:step:max
     % calculate progression for parameter combination
     res = epidemiologyLogisitc(ltStart, ltStep, ltMax, N, k(i));
 
-    % plot each result in own windows
+    % plot each result in own window
     figure;
     hold on;
     
-    title(strcat('N=1000,k=',num2str(k(i))));
+    title(strcat('N=1000, k=',num2str(k(i))));
     plot(ltStart:ltStep:ltMax, [res.iProg res.sProg]);
-    xlabel('time')
+    xlabel('t')
     legend('I_t', 'S_t');
     
     hold off;

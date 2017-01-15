@@ -1,11 +1,11 @@
 function result = epidemiologyLogisitc(tStart, tStep, tMax, N, k)
-% Epidiomology with logisitc modell
+% Epidiomology with logisitc model
 
     % Simulation arguments
     beta  = k/N;
     alpha = k;
     i     = 1;     % start one injected, otherwise desease cannot spread
-    idx   = 1;     % matrix index counter
+    idx   = 1;     % matrix index
 
     % result matrizes
     result    = [];                    % result container
@@ -13,9 +13,10 @@ function result = epidemiologyLogisitc(tStart, tStep, tMax, N, k)
     iProgress = zeros(tMax/tStep+1,1); % infected
 
     for t=tStart:tStep:tMax
-        % calculate differnzial
+        % calculate deviation
         i_ = (i * alpha) - (i^2 * beta); 
-        % calculate current injected
+        
+        % calculate current infected
         i  = i + i_ * tStep;
 
         % keep current results
