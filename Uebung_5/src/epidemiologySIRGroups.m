@@ -45,7 +45,7 @@ function result = epidemiologySIRGroups(config, data)
             % calculate deviation
             s_ = (-alpha * sum * s);
             i_ = (alpha  * sum * s) - (beta * i);
-            r_ =                      (beta   * i);
+            r_ =                      (beta * i);
                         
             % set new current values for next iteration
             runCont(j) = struct('s', (s + (s_ * config.tStep)), ...

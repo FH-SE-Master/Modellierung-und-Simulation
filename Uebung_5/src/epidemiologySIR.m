@@ -21,9 +21,9 @@ function result = epidemiologySIR(tStart, tStep, tMax, alpha, beta, iStart, N, m
 
     for t=tStart:tStep:tMax
         %                                       birth rate
-        s_ = -alpha * s * i / N               + (mu * N * (1 - p));
-        i_ =  alpha * s * i / N - beta * i;
-        r_ =                      beta * i    + (mu * N * p);
+        s_ = -alpha * s * (i / N)               + (mu * N * (1 - p));
+        i_ =  alpha * s * (i / N) - beta * i;
+        r_ =                        beta * i    + (mu * N * p);
         
         s = s + s_ * tStep;
         i = i + i_ * tStep;
