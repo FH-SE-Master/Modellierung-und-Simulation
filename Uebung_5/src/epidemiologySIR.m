@@ -3,16 +3,8 @@ function result = epidemiologySIR(tStart, tStep, tMax, alpha, beta, iStart, N, m
 
     % simulation arguments
     i = iStart;
-    r = N - i;
+    r = 0;
     s = N - i - r;
-    
-    if nargin == 7
-        mu = 0;
-        p  = 1;
-    end
-    if nargin == 8
-        p = 1;
-    end
 
     sProgress = zeros(tMax/tStep+1,1);
     iProgress = zeros(tMax/tStep+1,1);
@@ -21,20 +13,29 @@ function result = epidemiologySIR(tStart, tStep, tMax, alpha, beta, iStart, N, m
 
     for t=tStart:tStep:tMax
         %                                       birth rate
-        s_ = -alpha * s * (i / N)               + (mu * N * (1 - p));
-        i_ =  alpha * s * (i / N) - beta * i;
-        r_ =                        beta * i    + (mu * N * p);
+        s_ = -alpha * s * (i / N);
+        i_ =  alpha * s * (i / N) - (beta * i);
+        r_ =                        (beta * i);
         
+        % with birth rate
+        if nargin == 8
+            s_ = s_ + (mu * N);
+            r_ = r_ + (mu * N);
+        end
+        if nargin == 9
+            s_ = s_ + (mu * N * (1 - p));
+            r_ = r_ + (mu * N * p);
+        end
+
         s = s + s_ * tStep;
         i = i + i_ * tStep;
         r = r + r_ * tStep;
         
-        N_ = i + s + r;
-        
-        iProgress(j) = i;
         sProgress(j) = s;
+        iProgress(j) = i;
         rProgress(j) = r;
-        j = j+1;
+        
+        j = j + 1;
           
     end
     
