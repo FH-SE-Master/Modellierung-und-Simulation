@@ -6,7 +6,7 @@ kSize   = size(k);
 % Logisitc Simulation parameters 'epidemiologyLogisitc'
 ltStart = 0; 
 ltStep  = 0.01;
-ltMax   = 1.5;  
+ltMax   = 2;  
 
 % Simulation parameters 'epidemiologyLogisitcProg'
 start = 1;   

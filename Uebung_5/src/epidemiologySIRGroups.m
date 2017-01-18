@@ -1,15 +1,15 @@
-function result = epidemiologySIRGroups(config, data)
+function result = epidemiologySIRGroups(config, groups)
 % calculates the epidemiology for n given groups via an SIR model
 
     % simulation arguments
-    dataSize  = size(data);
-    dataCount = dataSize(1,2);
+    groupSize  = size(groups);
+    dataCount = groupSize(1,2);
     idx       = 1;
     runCont(1:dataCount) = struct('i', 0, 'r', 0, 's', 0);
     
     % initialize run container with start values
     for j=1:1:dataCount
-        curData = data(j); 
+        curData = groups(j); 
         runCont(j) = struct('s', (curData.N - curData.iStart), ...
                             'i', curData.iStart, ...
                             'r', 0);
@@ -26,7 +26,7 @@ function result = epidemiologySIRGroups(config, data)
         % loop for given data groups
         for j=1:1:dataCount
             curRun  = runCont(j);  % holds last current results or start values at begin
-            curData = data(j);     % the current group to calculate
+            curData = groups(j);     % the current group to calculate
             
             % old current values
             s     = curRun.s;
@@ -38,7 +38,7 @@ function result = epidemiologySIRGroups(config, data)
             
             % calcuate group-wide infections for current group
             for k=1:1:dataCount
-                sData = data(k);
+                sData = groups(k);
                 sum = sum + ((sData.k * sData.m(j)) * (runCont(k).i/sData.N));
             end
             
